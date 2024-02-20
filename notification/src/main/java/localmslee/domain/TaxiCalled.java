@@ -12,6 +12,6 @@ public class TaxiCalled extends AbstractEvent {
     private Long id;
     private String status;
     private Date callDt;
-    private String customerId;
     private Integer charge;
+    private Long customerId;
 }

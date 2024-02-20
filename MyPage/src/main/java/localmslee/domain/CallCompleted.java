@@ -11,6 +11,6 @@ public class CallCompleted extends AbstractEvent {
     private Long id;
     private String Status;
     private Date CallDt;
-    private String customerId;
     private Integer Charge;
+    private Long customerId;
 }
