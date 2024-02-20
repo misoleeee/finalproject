@@ -15,4 +15,9 @@ public class MyPage {
     @Id
     //@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+
+    private Long customerId;
+    private String status;
+    private Date callDt;
+    private Integer charge;
 }
