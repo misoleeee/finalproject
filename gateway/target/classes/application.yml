@@ -25,6 +25,10 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=/logs/**, 
+        - id: MyPage
+          uri: http://localhost:8086
+          predicates:
+            - Path=, 
         - id: frontend
           uri: http://localhost:8080
           predicates:
@@ -65,6 +69,10 @@ spring:
           uri: http://notification:8080
           predicates:
             - Path=/logs/**, 
+        - id: MyPage
+          uri: http://myPage:8080
+          predicates:
+            - Path=, 
         - id: frontend
           uri: http://frontend:8080
           predicates:
