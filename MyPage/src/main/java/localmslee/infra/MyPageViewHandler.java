@@ -16,5 +16,71 @@ public class MyPageViewHandler {
     //<<< DDD / CQRS
     @Autowired
     private MyPageRepository myPageRepository;
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenTaxiCalled_then_CREATE_1(@Payload TaxiCalled taxiCalled) {
+        try {
+            if (!taxiCalled.validate()) return;
+
+            // view 객체 생성
+            MyPage myPage = new MyPage();
+            // view 객체에 이벤트의 Value 를 set 함
+            myPage.setId(taxiCalled.getId());
+            myPage.setCustomerId(Long.valueOf(taxiCalled.getCustomerId()));
+            myPage.setStatus(taxiCalled.getStatus());
+            myPage.setCallDt(taxiCalled.getCallDt());
+            myPage.setCharge(taxiCalled.getCharge());
+            // view 레파지 토리에 save
+            myPageRepository.save(myPage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenCallAccepted_then_UPDATE_1(
+        @Payload CallAccepted callAccepted
+    ) {
+        try {
+            if (!callAccepted.validate()) return;
+            // view 객체 조회
+            Optional<MyPage> myPageOptional = myPageRepository.findById(
+                callAccepted.getId()
+            );
+
+            if (myPageOptional.isPresent()) {
+                MyPage myPage = myPageOptional.get();
+                // view 객체에 이벤트의 eventDirectValue 를 set 함
+                myPage.setStatus(callAccepted.getStatus());
+                // view 레파지 토리에 save
+                myPageRepository.save(myPage);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenCallCompleted_then_UPDATE_2(
+        @Payload CallCompleted callCompleted
+    ) {
+        try {
+            if (!callCompleted.validate()) return;
+            // view 객체 조회
+            Optional<MyPage> myPageOptional = myPageRepository.findById(
+                callCompleted.getId()
+            );
+
+            if (myPageOptional.isPresent()) {
+                MyPage myPage = myPageOptional.get();
+                // view 객체에 이벤트의 eventDirectValue 를 set 함
+                myPage.setStatus(callCompleted.getStatus());
+                // view 레파지 토리에 save
+                myPageRepository.save(myPage);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //>>> DDD / CQRS
 }
