@@ -17,7 +17,11 @@ public class MyPageViewHandler {
     @Autowired
     private MyPageRepository myPageRepository;
 
-    @StreamListener(KafkaProcessor.INPUT)
+    // @StreamListener(KafkaProcessor.INPUT)
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='TaxiCalled'"
+    )
     public void whenTaxiCalled_then_CREATE_1(@Payload TaxiCalled taxiCalled) {
         try {
             if (!taxiCalled.validate()) return;

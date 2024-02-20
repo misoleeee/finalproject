@@ -34,29 +34,17 @@ public class PolicyHandler {
         System.out.println("\n\n==================================================");
         System.out.println("##### listener IncreaseStock : " + driver + " / EventInfo : " + event + "\n\n");
         
-        // Driver temp2 = driverRepository.findById(driver.getDriverId()).get();
-        // temp2.setDriverQty(temp2.getDriverQty() - 1);
-        // driver.setDriverQty(driverRepository.findById(driver.getId()) - 1);
-
-        System.out.println("\n\n==================================================");
-        System.out.println("\n\n==================================================");
-        System.out.println(Long.valueOf(event.getCustomerId()));
-        System.out.println(driver.getDriverQty());
-        System.out.println(driverRepository.findById(Long.valueOf(driver.getId())));
-        System.out.println("\n\n==================================================");
-        System.out.println("\n\n==================================================");
-        
-        driverRepository.findById(Long.valueOf(event.getCustomerId())).ifPresent(driver->{
-            driver.setDriverQty(driver.getDriverQty() + 1); 
-            driverRepository.save(driver);
-        });
+        // driverRepository.findById(Long.valueOf(event.getCustomerId())).ifPresent(driver->{
+        //     driver.setDriverQty(driver.getDriverQty() + 1); 
+        //     driverRepository.save(driver);
+        // });
         
         // System.out.println("##### listener 줄어든 driver 수량 : " + temp2);
         // driverRepository.save(temp2);
         // System.out.println("\n\n==================================================");
         // System.out.println("##### save Repository Information : " + driverRepository.findById(driver.getId()));
 
-        // Driver.TaxiCall(event);
+        Driver.TaxiCall(event);
 
         // driver.setPrdStatus("결제완료");
         CallAccepted callAccepted = new CallAccepted(driver);
