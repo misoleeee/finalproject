@@ -57,7 +57,7 @@ public class Driver {
     }
 
     public static void TaxiCall(Driver event){
-        repository().findById(Long.valueOf(event.getStatus())).ifPresent(driver->{
+        repository().findById(Long.valueOf(event.getId())).ifPresent(driver->{
             driver.setDriverQty(driver.getDriverQty() - 1); 
             repository().save(driver);
         });
