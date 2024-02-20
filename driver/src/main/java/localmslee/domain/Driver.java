@@ -55,5 +55,19 @@ public class Driver {
         );
         return driverRepository;
     }
+
+    public static void TaxiCall(Driver event){
+        repository().findById(Long.valueOf(event.getId())).ifPresent(driver->{
+            driver.setDriverQty(driver.getDriverQty() - 1); 
+            repository().save(driver);
+        });
+    }
+
+    public static void CancelCall(Driver event){
+        repository().findById(Long.valueOf(event.getId())).ifPresent(driver->{
+            driver.setDriverQty(driver.getDriverQty() + 1); 
+            repository().save(driver);
+        });
+    }
 }
 //>>> DDD / Aggregate Root
