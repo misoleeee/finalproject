@@ -69,7 +69,6 @@
                     { text: "id", value: "id" },
                     { text: "customerId", value: "customerId" },
                     { text: "driverId", value: "driverId" },
-                    { text: "status", value: "status" },
                     { text: "callDt", value: "callDt" },
                     { text: "charge", value: "charge" },
                     { text: "paymentStatus", value: "paymentStatus" },
@@ -92,7 +91,6 @@
             this.newValue = {
                 'customerId': 0,
                 'driverId': 0,
-                'status': '',
                 'callDt': '2024-02-21',
                 'charge': 0,
                 'paymentStatus': '',

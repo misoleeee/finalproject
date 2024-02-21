@@ -12,10 +12,11 @@ import lombok.*;
 public class CallCanceled extends AbstractEvent {
 
     private Long id;
+    private Long customerId;
     private String status;
     private Date callDt;
     private Integer charge;
-    private Long customerId;
+    private String taxiType;
 
     public CallCanceled(Call aggregate) {
         super(aggregate);

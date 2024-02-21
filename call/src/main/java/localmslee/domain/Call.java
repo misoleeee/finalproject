@@ -28,6 +28,8 @@ public class Call {
 
     private Integer charge;
 
+    private String taxiType;
+
     @PostPersist
     public void onPostPersist() {
         TaxiCalled taxiCalled = new TaxiCalled(this);

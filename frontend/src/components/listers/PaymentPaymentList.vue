@@ -46,14 +46,12 @@
                             
                             
                             
-                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
                             [ Id :  {{data.id }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ CustomerId :  {{data.customerId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ DriverId :  {{data.driverId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ Status :  {{data.status }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ CallDt :  {{data.callDt }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Charge :  {{data.charge }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ PaymentStatus :  {{data.paymentStatus }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -126,7 +124,6 @@
             this.newValue = {
                 'customerId': 0,
                 'driverId': 0,
-                'status': '',
                 'callDt': '2024-02-21',
                 'charge': 0,
                 'paymentStatus': '',

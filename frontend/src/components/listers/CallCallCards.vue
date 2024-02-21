@@ -113,6 +113,7 @@
                 'status': '',
                 'callDt': '2024-02-21',
                 'charge': 0,
+                'taxiType': '',
             }
         },
         methods:{

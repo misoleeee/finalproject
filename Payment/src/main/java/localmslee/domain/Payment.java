@@ -23,8 +23,6 @@ public class Payment {
 
     private Long driverId;
 
-    private String status;
-
     private Date callDt;
 
     private Integer charge;

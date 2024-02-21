@@ -71,6 +71,7 @@
                     { text: "status", value: "status" },
                     { text: "callDt", value: "callDt" },
                     { text: "charge", value: "charge" },
+                    { text: "taxiType", value: "taxiType" },
                 ],
             call : [],
             newValue: {},
@@ -92,6 +93,7 @@
                 'status': '',
                 'callDt': '2024-02-21',
                 'charge': 0,
+                'taxiType': '',
             }
         },
         methods: {
