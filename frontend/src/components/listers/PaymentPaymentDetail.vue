@@ -12,9 +12,6 @@
                 <Number label="DriverId" v-model="item.driverId" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <String label="Status" v-model="item.status" :editMode="editMode" @change="change" />
-            </div>
-            <div>
                 <Date label="CallDt" v-model="item.callDt" :editMode="editMode" @change="change" />
             </div>
             <div>

@@ -9,6 +9,6 @@ import lombok.Data;
 public class TaxiAccepted extends AbstractEvent {
 
     private Long id;
-    private Integer DriverQty;
+    private Integer driverQty;
     private String taxiType;
 }

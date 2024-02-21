@@ -45,6 +45,7 @@
                             
                             
                             
+                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
@@ -53,6 +54,7 @@
                             [ Status :  {{data.status }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ CallDt :  {{data.callDt }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Charge :  {{data.charge }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ TaxiType :  {{data.taxiType }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -124,6 +126,7 @@
                 'status': '',
                 'callDt': '2024-02-21',
                 'charge': 0,
+                'taxiType': '',
             }
         },
         methods: {

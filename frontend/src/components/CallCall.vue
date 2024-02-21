@@ -20,6 +20,7 @@
             <String label="Status" v-model="value.status" :editMode="editMode" :inputUI="''"/>
             <Date label="CallDt" v-model="value.callDt" :editMode="editMode" :inputUI="''"/>
             <Number label="Charge" v-model="value.charge" :editMode="editMode" :inputUI="''"/>
+            <String label="TaxiType" v-model="value.taxiType" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>

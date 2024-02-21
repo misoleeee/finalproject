@@ -12,10 +12,11 @@ import lombok.*;
 public class TaxiCalled extends AbstractEvent {
 
     private Long id;
+    private Long customerId;
     private String status;
     private Date callDt;
     private Integer charge;
-    private Long customerId;
+    private String taxiType;
 
     public TaxiCalled(Call aggregate) {
         super(aggregate);
