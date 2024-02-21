@@ -7,11 +7,6 @@ import lombok.Data;
 public class Driver {
 
     private Long id;
-    private Long driverId;
-    private String status;
-    private Date callDt;
     private Integer driverQty;
-    private Long customerId;
-    private Integer charge;
-    private String paymentStatus;
+    private Long driverId;
 }

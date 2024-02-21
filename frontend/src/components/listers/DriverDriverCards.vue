@@ -109,13 +109,8 @@
             me.values = temp.data._embedded.drivers;
             
             me.newValue = {
-                'driverId': 0,
-                'status': '',
-                'callDt': '2024-02-21',
                 'driverQty': 0,
-                'customerId': 0,
-                'charge': 0,
-                'paymentStatus': '',
+                'driverId': 0,
             }
         },
         methods:{
