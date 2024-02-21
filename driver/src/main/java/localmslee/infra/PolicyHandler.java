@@ -33,21 +33,26 @@ public class PolicyHandler {
         Driver event = driver;
 
         // driverQty Decrease
-        System.out.println("\n\n==================================================");
-        System.out.println("==================================================");
         System.out.println("==================================================");
 
-        Long temp = 1L;
-        System.out.println("##### driverQty Before Decrease : " + driverRepository.findByDriverId(temp) + "");
+        Integer temp = 1;
+        System.out.println("##### driverQty Before Decrease : " + driverRepository.findByDriverId(Long.valueOf(temp)) + "");
 
-        Integer driverQty = driverRepository.findByDriverId(temp).get().getDriverQty()-1;
+        Integer qty = driverRepository.findByDriverId(Long.valueOf(temp)).get().getDriverQty();
+
+        // if(qty <= 0 ){
+        //     CallCanceled callAccepted = new CallAccepted(driver);
+        //     callAccepted.publishAfterCommit();
+        // }
+
+        Integer driverQty = driverRepository.findByDriverId(Long.valueOf(temp)).get().getDriverQty()-1;
         driver.setDriverQty(driverQty);
         driverRepository.save(driver);
 
-        System.out.println("##### driverQty After Decrease : " + driverRepository.findByDriverId(temp) + "\n\n");
+        System.out.println("##### driverQty After Decrease : " + driverRepository.findByDriverId(Long.valueOf(temp)) + "\n\n");
         
-        // Driver.TaxiCall(event);
-        // driver.setPrdStatus("결제완료");
+
+        //kafka message 처리 (callAccepted 호출)
         CallAccepted callAccepted = new CallAccepted(driver);
         callAccepted.publishAfterCommit();
     }
