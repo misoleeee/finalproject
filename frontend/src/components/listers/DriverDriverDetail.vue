@@ -9,7 +9,7 @@
                 <Number label="DriverQty" v-model="item.driverQty" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <Number label="DriverId" v-model="item.driverId" :editMode="editMode" @change="change" />
+                <String label="TaxiType" v-model="item.taxiType" :editMode="editMode" @change="change" />
             </div>
         </v-card-text>
 

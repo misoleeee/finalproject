@@ -8,5 +8,5 @@ public class Driver {
 
     private Long id;
     private Integer driverQty;
-    private Long driverId;
+    private String taxiType;
 }

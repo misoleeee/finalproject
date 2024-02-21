@@ -68,7 +68,7 @@
                 [
                     { text: "id", value: "id" },
                     { text: "driverQty", value: "driverQty" },
-                    { text: "driverId", value: "driverId" },
+                    { text: "taxiType", value: "taxiType" },
                 ],
             driver : [],
             newValue: {},
@@ -87,7 +87,7 @@
 
             this.newValue = {
                 'driverQty': 0,
-                'driverId': 0,
+                'taxiType': '',
             }
         },
         methods: {

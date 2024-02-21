@@ -18,7 +18,7 @@
                                 DriverQty :  {{item.driverQty }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                DriverId :  {{item.driverId }}
+                                TaxiType :  {{item.taxiType }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 

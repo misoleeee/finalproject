@@ -110,7 +110,7 @@
             
             me.newValue = {
                 'driverQty': 0,
-                'driverId': 0,
+                'taxiType': '',
             }
         },
         methods:{

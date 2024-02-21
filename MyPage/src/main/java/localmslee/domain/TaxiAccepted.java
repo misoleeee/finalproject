@@ -10,5 +10,5 @@ public class TaxiAccepted extends AbstractEvent {
 
     private Long id;
     private Integer DriverQty;
-    private Long driverId;
+    private String taxiType;
 }

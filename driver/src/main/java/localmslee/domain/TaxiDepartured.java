@@ -13,7 +13,7 @@ public class TaxiDepartured extends AbstractEvent {
 
     private Long id;
     private Integer driverQty;
-    private Long driverId;
+    private String taxiType;
 
     public TaxiDepartured(Driver aggregate) {
         super(aggregate);

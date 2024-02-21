@@ -17,7 +17,7 @@
 
         <v-card-text>
             <Number label="DriverQty" v-model="value.driverQty" :editMode="editMode" :inputUI="''"/>
-            <Number label="DriverId" v-model="value.driverId" :editMode="editMode" :inputUI="''"/>
+            <String label="TaxiType" v-model="value.taxiType" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>
