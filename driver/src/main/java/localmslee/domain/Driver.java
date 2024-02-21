@@ -22,7 +22,7 @@ public class Driver {
 
     private Integer driverQty;
 
-    private Long driverId;
+    private String taxiType;
 
     @PostPersist
     public void onPostPersist() {
