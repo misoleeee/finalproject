@@ -14,6 +14,7 @@ public class TaxiAccepted extends AbstractEvent {
     private Long id;
     private Integer driverQty;
     private String taxiType;
+    private String status;
 
     public TaxiAccepted(Driver aggregate) {
         super(aggregate);

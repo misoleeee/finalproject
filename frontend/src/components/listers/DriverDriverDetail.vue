@@ -11,6 +11,9 @@
             <div>
                 <String label="TaxiType" v-model="item.taxiType" :editMode="editMode" @change="change" />
             </div>
+            <div>
+                <String label="Status" v-model="item.status" :editMode="editMode" @change="change" />
+            </div>
         </v-card-text>
 
         <v-card-actions>

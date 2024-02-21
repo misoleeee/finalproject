@@ -43,12 +43,14 @@
                             
                             
                             
+                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
                             [ Id :  {{data.id }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ DriverQty :  {{data.driverQty }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ TaxiType :  {{data.taxiType }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Status :  {{data.status }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -118,6 +120,7 @@
             this.newValue = {
                 'driverQty': 0,
                 'taxiType': '',
+                'status': '',
             }
         },
         methods: {

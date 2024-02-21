@@ -14,6 +14,7 @@ public class TaxiCanceled extends AbstractEvent {
     private Long id;
     private Integer driverQty;
     private String taxiType;
+    private String status;
 
     public TaxiCanceled(Driver aggregate) {
         super(aggregate);

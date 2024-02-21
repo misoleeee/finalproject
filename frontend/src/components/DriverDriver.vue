@@ -18,6 +18,7 @@
         <v-card-text>
             <Number label="DriverQty" v-model="value.driverQty" :editMode="editMode" :inputUI="''"/>
             <String label="TaxiType" v-model="value.taxiType" :editMode="editMode" :inputUI="''"/>
+            <String label="Status" v-model="value.status" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>
