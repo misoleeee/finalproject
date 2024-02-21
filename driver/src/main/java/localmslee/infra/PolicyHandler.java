@@ -34,26 +34,21 @@ public class PolicyHandler {
         // driverQty Decrease
         System.out.println("==================================================");
 
-        Integer temp = 1;
         // System.out.println("##### driverQty Before Decrease : " + driverRepository.findByDriverId(Long.valueOf(temp)) + "");
 
-        Integer qty = driverRepository.findByDriverId(Long.valueOf(temp)).get().getDriverQty();
+        Integer qty = driverRepository.findById(Long.parseLong(event.getTaxiType())).get().getDriverQty();
 
         System.out.println("##### driverQty Before Decrease : " + qty + "");
 
 
         if(qty > 0 ){
             //kafka message 처리 (TaxiAccepted 호출)
-            TaxiAccepted TaxiAccepted = new TaxiAccepted(driver);
-            TaxiAccepted.publishAfterCommit();
-            
+            TaxiAccepted taxiAccepted = new TaxiAccepted(driver);
+            taxiAccepted.publishAfterCommit();
         }
         else {
-            
             TaxiCanceled taxiCanceled = new TaxiCanceled(driver);
             taxiCanceled.publishAfterCommit();
-        
-
         }
 
         // Integer driverQty = driverRepository.findByDriverId(Long.valueOf(temp)).get().getDriverQty()-1;
