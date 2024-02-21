@@ -163,22 +163,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mypage
+  name: MyPage
   labels:
-    app: mypage
+    app: MyPage
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mypage
+      app: MyPage
   template:
     metadata:
       labels:
-        app: mypage
+        app: MyPage
     spec:
       containers:
-        - name: mypage
-          image: username/mypage:latest
+        - name: MyPage
+          image: username/MyPage:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -273,13 +273,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mypage
+  name: MyPage
   labels:
-    app: mypage
+    app: MyPage
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: mypage
+    app: MyPage
 

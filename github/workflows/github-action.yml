@@ -33,7 +33,7 @@ jobs:
           mvn clean package -f ./driver/pom.xml
           mvn clean package -f ./payment/pom.xml
           mvn clean package -f ./notification/pom.xml
-          mvn clean package -f ./mypage/pom.xml
+          mvn clean package -f ./MyPage/pom.xml
 
       - name: Docker Build and push for Call
         uses: docker/build-push-action@v4
@@ -75,10 +75,10 @@ jobs:
             ghcr.io/${{ github.repository }}/notification:latest
             ghcr.io/${{ github.repository }}/notification:${{ github.ref_name }}
             
-      - name: Docker Build and push for Mypage
+      - name: Docker Build and push for MyPage
         uses: docker/build-push-action@v4
         with:
-          context: ./mypage
+          context: ./MyPage
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
