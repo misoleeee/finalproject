@@ -24,6 +24,8 @@ public class Driver {
 
     private String taxiType;
 
+    private String status;
+
     @PostPersist
     public void onPostPersist() {
         TaxiAccepted taxiAccepted = new TaxiAccepted(this);

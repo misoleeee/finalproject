@@ -111,6 +111,7 @@
             me.newValue = {
                 'driverQty': 0,
                 'taxiType': '',
+                'status': '',
             }
         },
         methods:{

@@ -9,4 +9,5 @@ public class Driver {
     private Long id;
     private Integer driverQty;
     private String taxiType;
+    private String status;
 }
