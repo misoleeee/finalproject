@@ -29,20 +29,16 @@ public class PolicyHandler {
     public void TaxiCalled_TaxiAccepted(
         @Payload Driver driver
     ) {
-        Driver event = driver;
-
         // driverQty Decrease
-        System.out.println("==================================================");
-
-        // System.out.println("##### driverQty Before Decrease : " + driverRepository.findByDriverId(Long.valueOf(temp)) + "");
-
-        Integer qty = driverRepository.findById(Long.parseLong(event.getTaxiType())).get().getDriverQty();
-
-        System.out.println("##### driverQty Before Decrease : " + qty + "");
-
+        Integer qty = driverRepository.findById(Long.parseLong(driver.getTaxiType())).get().getDriverQty();
 
         if(qty > 0 ){
             //kafka message 처리 (TaxiAccepted 호출)
+            driverRepository.findById(Long.parseLong(driver.getTaxiType())).ifPresent(inventory->{
+                driver.setDriverQty(qty-1);
+                driverRepository.save(driver);
+            });
+
             TaxiAccepted taxiAccepted = new TaxiAccepted(driver);
             taxiAccepted.publishAfterCommit();
         }
@@ -51,11 +47,10 @@ public class PolicyHandler {
             taxiCanceled.publishAfterCommit();
         }
 
-        // Integer driverQty = driverRepository.findByDriverId(Long.valueOf(temp)).get().getDriverQty()-1;
-        // driver.setDriverQty(driverQty);
-        // driverRepository.save(driver);
-
-        // System.out.println("##### driverQty After Decrease : " + driverRepository.findByDriverId(Long.valueOf(temp)) + "\n\n");
+        // repository().findById(Long.valueOf(orderPlaced.getProductId())).ifPresent(inventory->{
+        //     inventory.setStock(inventory.getStock() - orderPlaced.getQty()); // do something
+        //     repository().save(inventory);
+        //  });
     }
 
     @StreamListener(
@@ -65,23 +60,15 @@ public class PolicyHandler {
     public void wheneverTaxiCancelled_CancelCall(
         @Payload Driver driver
     ) {
-        Driver event = driver;
-        System.out.println(
-            "\n\n##### listener IncreaseStock : " + driver + "\n\n"
-        );
-
-        driver.setDriverQty(driver.getDriverQty() + 1);
-        driverRepository.save(driver);
-        // Driver.CancelCall(event);
-
-        // repository().findById(Long.valueOf(event.getId())).ifPresent(driver->{
-        //     driver.setDriverQty(driver.getDriverQty() + event.getDriverQty()); 
-        //     driverRepository.save(driver);
-
-        // });
-
-        // Sample Logic //
-        // Inventory.increaseStock(event);
+        // driverQty Increase
+        Integer qty = driverRepository.findById(Long.parseLong(driver.getTaxiType())).get().getDriverQty();
+        //kafka message 처리
+        driverRepository.findById(Long.parseLong(driver.getTaxiType())).ifPresent(inventory->{
+            driver.setDriverQty(qty+1);
+            driverRepository.save(driver);
+        });
+        TaxiCanceled taxiCanceled = new TaxiCanceled(driver);
+        taxiCanceled.publishAfterCommit();
     }
 }
 //>>> Clean Arch / Inbound Adaptor

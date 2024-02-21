@@ -13,5 +13,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 //<<< PoEAA / Repository
 @RepositoryRestResource(collectionResourceRel = "drivers", path = "drivers")
 public interface DriverRepository extends PagingAndSortingRepository<Driver, Long> {
-    Optional<Driver> findByDriverId(Long driverId);
+    // Optional<Driver> findByTaxiType(String taxiType);
 }
