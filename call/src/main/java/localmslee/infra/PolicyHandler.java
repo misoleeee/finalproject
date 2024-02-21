@@ -38,14 +38,14 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='CallAccepted'"
+        condition = "headers['type']=='TaxiAccepted'"
     )
-    public void wheneverCallAccepted_TaxiSaga(
-        @Payload CallAccepted callAccepted
+    public void wheneverTaxiAccepted_TaxiSaga(
+        @Payload TaxiAccepted taxiAccepted
     ) {
-        CallAccepted event = callAccepted;
+        TaxiAccepted event = taxiAccepted;
         System.out.println(
-            "\n\n##### listener TaxiSaga : " + callAccepted + "\n\n"
+            "\n\n##### listener TaxiSaga : " + taxiAccepted + "\n\n"
         );
         // Sample Logic //
 
