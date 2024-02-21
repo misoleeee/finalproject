@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import localmslee.DriverApplication;
-import localmslee.domain.CallAccepted;
-import localmslee.domain.CallCanceled;
+import localmslee.domain.TaxiAccepted;
+import localmslee.domain.TaxiCanceled;
 import localmslee.domain.TaxiDepartured;
 import lombok.Data;
 
@@ -36,8 +36,8 @@ public class Driver {
 
     @PostPersist
     public void onPostPersist() {
-        CallAccepted callAccepted = new CallAccepted(this);
-        callAccepted.publishAfterCommit();
+        TaxiAccepted taxiAccepted = new TaxiAccepted(this);
+        taxiAccepted.publishAfterCommit();
 
         TaxiDepartured taxiDepartured = new TaxiDepartured(this);
         taxiDepartured.publishAfterCommit();
@@ -45,8 +45,8 @@ public class Driver {
 
     @PreRemove
     public void onPreRemove() {
-        CallCanceled callCanceled = new CallCanceled(this);
-        callCanceled.publishAfterCommit();
+        TaxiCanceled taxiCanceled = new TaxiCanceled(this);
+        taxiCanceled.publishAfterCommit();
     }
 
     public static DriverRepository repository() {

@@ -38,20 +38,20 @@ public class MyPageViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenCallAccepted_then_UPDATE_1(
-        @Payload CallAccepted callAccepted
+    public void whenTaxiAccepted_then_UPDATE_1(
+        @Payload TaxiAccepted taxiAccepted
     ) {
         try {
-            if (!callAccepted.validate()) return;
+            if (!taxiAccepted.validate()) return;
             // view 객체 조회
             Optional<MyPage> myPageOptional = myPageRepository.findById(
-                callAccepted.getId()
+                taxiAccepted.getId()
             );
 
             if (myPageOptional.isPresent()) {
                 MyPage myPage = myPageOptional.get();
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                myPage.setStatus(callAccepted.getStatus());
+                myPage.setStatus(taxiAccepted.getStatus());
                 // view 레파지 토리에 save
                 myPageRepository.save(myPage);
             }

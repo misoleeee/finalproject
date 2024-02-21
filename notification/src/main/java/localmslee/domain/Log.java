@@ -99,7 +99,7 @@ public class Log {
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
-    public static void alertToUser(CallAccepted callAccepted) {
+    public static void alertToUser(TaxiAccepted taxiAccepted) {
         //implement business logic here:
 
         /** Example 1:  new item 
@@ -110,7 +110,7 @@ public class Log {
 
         /** Example 2:  finding and process
         
-        repository().findById(callAccepted.get???()).ifPresent(log->{
+        repository().findById(taxiAccepted.get???()).ifPresent(log->{
             
             log // do something
             repository().save(log);
