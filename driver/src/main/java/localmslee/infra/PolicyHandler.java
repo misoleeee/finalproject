@@ -65,5 +65,28 @@ public class PolicyHandler {
         TaxiCanceled taxiCanceled = new TaxiCanceled(driver);
         taxiCanceled.publishAfterCommit();
     }
+
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='AdvancePayment'"
+    )
+    public void wheneverAdvancePayment_TaxiDepartured(
+        @Payload Driver driver
+    ) {
+        TaxiDepartured taxiDepartured = new TaxiDepartured(driver);
+        taxiDepartured.publishAfterCommit();
+    }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='TaxiDepartured'"
+    )
+    public void wheneverTaxiDepartured_TaxiArrived(
+        @Payload Driver driver
+    ) {
+        TaxiArrived taxiArrived = new TaxiArrived(driver);
+        taxiArrived.publishAfterCommit();
+    }
 }
 //>>> Clean Arch / Inbound Adaptor

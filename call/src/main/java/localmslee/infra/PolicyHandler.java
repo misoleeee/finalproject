@@ -36,6 +36,17 @@ public class PolicyHandler {
 
     }
 
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='TaxiCanceled'"
+    )
+    public void wheneverTaxiCanceled_CallCanceled(
+        @Payload Call call
+    ) {
+        CallCanceled callCanceled = new CallCanceled(call);
+        callCanceled.publishAfterCommit();
+    }
+
     // @StreamListener(
     //     value = KafkaProcessor.INPUT,
     //     condition = "headers['type']=='TaxiAccepted'"
@@ -51,20 +62,20 @@ public class PolicyHandler {
 
     // }
 
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='AdvancePayment'"
-    )
-    public void wheneverAdvancePayment_TaxiSaga(
-        @Payload AdvancePayment advancePayment
-    ) {
-        AdvancePayment event = advancePayment;
-        System.out.println(
-            "\n\n##### listener TaxiSaga : " + advancePayment + "\n\n"
-        );
-        // Sample Logic //
+    // @StreamListener(
+    //     value = KafkaProcessor.INPUT,
+    //     condition = "headers['type']=='AdvancePayment'"
+    // )
+    // public void wheneverAdvancePayment_TaxiSaga(
+    //     @Payload AdvancePayment advancePayment
+    // ) {
+    //     AdvancePayment event = advancePayment;
+    //     System.out.println(
+    //         "\n\n##### listener TaxiSaga : " + advancePayment + "\n\n"
+    //     );
+    //     // Sample Logic //
 
-    }
+    // }
 
     // @StreamListener(
     //     value = KafkaProcessor.INPUT,
@@ -111,22 +122,17 @@ public class PolicyHandler {
 
     }
 
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='TaxiCanceled'"
-    )
-    public void wheneverTaxiCancelled_CancelCall(
-        @Payload Call call
-    ) {
-        Call event = call;
+    // @StreamListener(
+    //     value = KafkaProcessor.INPUT,
+    //     condition = "headers['type']=='TaxiArrived'"
+    // )
+    // public void wheneverTaxiArrived_TaxiSaga(@Payload TaxiArrived taxiArrived) {
+    //     TaxiArrived event = taxiArrived;
+    //     System.out.println(
+    //         "\n\n##### listener TaxiSaga : " + taxiArrived + "\n\n"
+    //     );
+    //     // Sample Logic //
 
-        // driverQty Decrease
-        System.out.println("==================================================");
-        // Integer qty = callRepository.findById(event.getId()).get().get;
-
-        //kafka message 처리 (TaxiAccepted 호출)
-        CallCanceled callCanceled = new CallCanceled(call);
-        callCanceled.publishAfterCommit();
-    }
+    // }
 }
 //>>> Clean Arch / Inbound Adaptor

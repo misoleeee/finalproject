@@ -36,9 +36,9 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='FinalPayment'"
+        condition = "headers['type']=='TaxiArrived'"
     )
-    public void wheneverAdvancePayment_FinalPayment(
+    public void wheneverTaxiArrived_FinalPayment(
         @Payload Payment payment
     ) {
         FinalPayment finalPayment = new FinalPayment(payment);
