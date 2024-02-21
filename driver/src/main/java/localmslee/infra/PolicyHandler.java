@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
-
 //<<< Clean Arch / Inbound Adaptor
 @Service
 @Transactional
@@ -27,7 +26,7 @@ public class PolicyHandler {
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='TaxiCalled'"
     )
-    public void TaxiCalled_CallAccepted(
+    public void TaxiCalled_TaxiAccepted(
         @Payload Driver driver
     ) {
         Driver event = driver;
@@ -36,25 +35,32 @@ public class PolicyHandler {
         System.out.println("==================================================");
 
         Integer temp = 1;
-        System.out.println("##### driverQty Before Decrease : " + driverRepository.findByDriverId(Long.valueOf(temp)) + "");
+        // System.out.println("##### driverQty Before Decrease : " + driverRepository.findByDriverId(Long.valueOf(temp)) + "");
 
         Integer qty = driverRepository.findByDriverId(Long.valueOf(temp)).get().getDriverQty();
 
-        // if(qty <= 0 ){
-        //     CallCanceled callAccepted = new CallAccepted(driver);
-        //     callAccepted.publishAfterCommit();
-        // }
+        System.out.println("##### driverQty Before Decrease : " + qty + "");
 
-        Integer driverQty = driverRepository.findByDriverId(Long.valueOf(temp)).get().getDriverQty()-1;
-        driver.setDriverQty(driverQty);
-        driverRepository.save(driver);
 
-        System.out.println("##### driverQty After Decrease : " + driverRepository.findByDriverId(Long.valueOf(temp)) + "\n\n");
+        if(qty > 0 ){
+            //kafka message 처리 (TaxiAccepted 호출)
+            TaxiAccepted TaxiAccepted = new TaxiAccepted(driver);
+            TaxiAccepted.publishAfterCommit();
+            
+        }
+        else {
+            
+            TaxiCanceled taxiCanceled = new TaxiCanceled(driver);
+            taxiCanceled.publishAfterCommit();
         
 
-        //kafka message 처리 (callAccepted 호출)
-        CallAccepted callAccepted = new CallAccepted(driver);
-        callAccepted.publishAfterCommit();
+        }
+
+        // Integer driverQty = driverRepository.findByDriverId(Long.valueOf(temp)).get().getDriverQty()-1;
+        // driver.setDriverQty(driverQty);
+        // driverRepository.save(driver);
+
+        // System.out.println("##### driverQty After Decrease : " + driverRepository.findByDriverId(Long.valueOf(temp)) + "\n\n");
     }
 
     @StreamListener(

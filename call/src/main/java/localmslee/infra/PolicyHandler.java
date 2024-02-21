@@ -110,5 +110,23 @@ public class PolicyHandler {
         // Sample Logic //
 
     }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='TaxiCanceled'"
+    )
+    public void wheneverTaxiCancelled_CancelCall(
+        @Payload Call call
+    ) {
+        Call event = call;
+
+        // driverQty Decrease
+        System.out.println("==================================================");
+        // Integer qty = callRepository.findById(event.getId()).get().get;
+
+        //kafka message 처리 (TaxiAccepted 호출)
+        CallCanceled callCanceled = new CallCanceled(call);
+        callCanceled.publishAfterCommit();
+    }
 }
 //>>> Clean Arch / Inbound Adaptor
