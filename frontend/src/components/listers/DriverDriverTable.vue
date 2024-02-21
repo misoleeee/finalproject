@@ -67,13 +67,8 @@
             headers: 
                 [
                     { text: "id", value: "id" },
-                    { text: "driverId", value: "driverId" },
-                    { text: "status", value: "status" },
-                    { text: "callDt", value: "callDt" },
                     { text: "driverQty", value: "driverQty" },
-                    { text: "customerId", value: "customerId" },
-                    { text: "charge", value: "charge" },
-                    { text: "paymentStatus", value: "paymentStatus" },
+                    { text: "driverId", value: "driverId" },
                 ],
             driver : [],
             newValue: {},
@@ -91,13 +86,8 @@
             this.values = temp.data._embedded.drivers;
 
             this.newValue = {
-                'driverId': 0,
-                'status': '',
-                'callDt': '2024-02-21',
                 'driverQty': 0,
-                'customerId': 0,
-                'charge': 0,
-                'paymentStatus': '',
+                'driverId': 0,
             }
         },
         methods: {

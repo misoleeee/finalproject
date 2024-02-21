@@ -15,25 +15,10 @@
                             <v-list-item-title>
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                DriverId :  {{item.driverId }}
-                            </v-list-item-subtitle>
-                            <v-list-item-subtitle>
-                                Status :  {{item.status }}
-                            </v-list-item-subtitle>
-                            <v-list-item-subtitle>
-                                CallDt :  {{item.callDt }}
-                            </v-list-item-subtitle>
-                            <v-list-item-subtitle>
                                 DriverQty :  {{item.driverQty }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                CustomerId :  {{item.customerId }}
-                            </v-list-item-subtitle>
-                            <v-list-item-subtitle>
-                                Charge :  {{item.charge }}
-                            </v-list-item-subtitle>
-                            <v-list-item-subtitle>
-                                PaymentStatus :  {{item.paymentStatus }}
+                                DriverId :  {{item.driverId }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 
@@ -86,16 +71,6 @@
                 if(val != undefined) {
                     var arr = this.list[val]._links.self.href.split('/');
                     obj['id'] = arr[4]; 
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     
                     
                     
