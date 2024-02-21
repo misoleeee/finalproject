@@ -36,20 +36,20 @@ public class PolicyHandler {
 
     }
 
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='TaxiAccepted'"
-    )
-    public void wheneverTaxiAccepted_TaxiSaga(
-        @Payload TaxiAccepted taxiAccepted
-    ) {
-        TaxiAccepted event = taxiAccepted;
-        System.out.println(
-            "\n\n##### listener TaxiSaga : " + taxiAccepted + "\n\n"
-        );
-        // Sample Logic //
+    // @StreamListener(
+    //     value = KafkaProcessor.INPUT,
+    //     condition = "headers['type']=='TaxiAccepted'"
+    // )
+    // public void wheneverTaxiAccepted_TaxiSaga(
+    //     @Payload TaxiAccepted taxiAccepted
+    // ) {
+    //     TaxiAccepted event = taxiAccepted;
+    //     System.out.println(
+    //         "\n\n##### listener TaxiSaga : " + taxiAccepted + "\n\n"
+    //     );
+    //     // Sample Logic //
 
-    }
+    // }
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
@@ -66,20 +66,20 @@ public class PolicyHandler {
 
     }
 
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='TaxiDepartured'"
-    )
-    public void wheneverTaxiDepartured_TaxiSaga(
-        @Payload TaxiDepartured taxiDepartured
-    ) {
-        TaxiDepartured event = taxiDepartured;
-        System.out.println(
-            "\n\n##### listener TaxiSaga : " + taxiDepartured + "\n\n"
-        );
-        // Sample Logic //
+    // @StreamListener(
+    //     value = KafkaProcessor.INPUT,
+    //     condition = "headers['type']=='TaxiDepartured'"
+    // )
+    // public void wheneverTaxiDepartured_TaxiSaga(
+    //     @Payload TaxiDepartured taxiDepartured
+    // ) {
+    //     TaxiDepartured event = taxiDepartured;
+    //     System.out.println(
+    //         "\n\n##### listener TaxiSaga : " + taxiDepartured + "\n\n"
+    //     );
+    //     // Sample Logic //
 
-    }
+    // }
 
     @StreamListener(
         value = KafkaProcessor.INPUT,

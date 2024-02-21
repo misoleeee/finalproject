@@ -46,11 +46,6 @@ public class PolicyHandler {
             TaxiCanceled taxiCanceled = new TaxiCanceled(driver);
             taxiCanceled.publishAfterCommit();
         }
-
-        // repository().findById(Long.valueOf(orderPlaced.getProductId())).ifPresent(inventory->{
-        //     inventory.setStock(inventory.getStock() - orderPlaced.getQty()); // do something
-        //     repository().save(inventory);
-        //  });
     }
 
     @StreamListener(
