@@ -17,7 +17,7 @@ spring:
           uri: http://localhost:8083
           predicates:
             - Path=/drivers/**, 
-        - id: Payment
+        - id: payment
           uri: http://localhost:8084
           predicates:
             - Path=/payments/**, 
@@ -25,7 +25,7 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=/logs/**, 
-        - id: MyPage
+        - id: mypage
           uri: http://localhost:8086
           predicates:
             - Path=, 
@@ -61,7 +61,7 @@ spring:
           uri: http://driver:8080
           predicates:
             - Path=/drivers/**, 
-        - id: Payment
+        - id: payment
           uri: http://payment:8080
           predicates:
             - Path=/payments/**, 
@@ -69,8 +69,8 @@ spring:
           uri: http://notification:8080
           predicates:
             - Path=/logs/**, 
-        - id: MyPage
-          uri: http://myPage:8080
+        - id: mypage
+          uri: http://mypage:8080
           predicates:
             - Path=, 
         - id: frontend

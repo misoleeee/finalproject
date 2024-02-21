@@ -17,32 +17,7 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class PolicyHandler {
 
-    @Autowired
-    PaymentRepository paymentRepository;
-
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
-
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='TaxiAccepted'"
-    )
-    public void wheneverTaxiAccepted_AdvancePayment(
-        @Payload Payment payment
-    ) {
-        AdvancePayment advancePayment = new AdvancePayment(payment);
-        advancePayment.publishAfterCommit();
-    }
-
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='TaxiArrived'"
-    )
-    public void wheneverTaxiArrived_FinalPayment(
-        @Payload Payment payment
-    ) {
-        FinalPayment finalPayment = new FinalPayment(payment);
-        finalPayment.publishAfterCommit();
-    }
 }
 //>>> Clean Arch / Inbound Adaptor

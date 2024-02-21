@@ -1,23 +1,17 @@
 package localmslee.domain;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import javax.persistence.*;
+import java.util.*;
+import localmslee.infra.AbstractEvent;
 import lombok.Data;
 
-//<<< EDA / CQRS
-@Entity
-@Table(name = "MyPage_table")
 @Data
-public class MyPage {
+public class CallCompleted extends AbstractEvent {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-
     private Long customerId;
     private String status;
     private Date callDt;
     private Integer charge;
+    private String taxiType;
 }

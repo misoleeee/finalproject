@@ -8,12 +8,12 @@ import lombok.Data;
 
 //<<< EDA / CQRS
 @Entity
-@Table(name = "MyPage_table")
+@Table(name = "Mypage_table")
 @Data
-public class MyPage {
+public class Mypage {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    //@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     private Long customerId;
