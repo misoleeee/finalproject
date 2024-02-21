@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 import localmslee.DriverApplication;
 import localmslee.domain.TaxiAccepted;
+import localmslee.domain.TaxiArrived;
 import localmslee.domain.TaxiCanceled;
 import localmslee.domain.TaxiDepartured;
 import lombok.Data;
@@ -33,6 +34,9 @@ public class Driver {
 
         TaxiDepartured taxiDepartured = new TaxiDepartured(this);
         taxiDepartured.publishAfterCommit();
+
+        TaxiArrived taxiArrived = new TaxiArrived(this);
+        taxiArrived.publishAfterCommit();
     }
 
     @PreRemove
